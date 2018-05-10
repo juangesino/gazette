@@ -1,0 +1,9 @@
+<template name="ApplicationLayout">
+
+  {{> navBar}}
+  {{> filters}}
+
+  <div class="container">
+    {{> yield "main"}}
+  </div>
+</template>

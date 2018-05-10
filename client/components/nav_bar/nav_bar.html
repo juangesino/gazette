@@ -1,0 +1,31 @@
+<template name="navBar">
+  <nav class="navbar navbar-default" style="background: #5868f9; border: none;border-radius: 0;margin-bottom: 0;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-2" style="padding: 0;">
+          <div class="navbar-header">
+            {{#if hasBackLink}}
+              <a class="navbar-brand" href="{{backLink}}"><i class="fa fa-arrow-left" style="color: white;"></i></a>
+            {{/if}}
+          </div>
+        </div>
+        <div class="col-xs-8" style="padding: 0;">
+          <div class="navbar-header" style="text-align: center;">
+            <a class="navbar-brand" style="display: inline-block;float: none;color:white">
+              {{navTitle}}
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-2" style="padding: 0;">
+          <a class="navbar-brand js-toggle-filters" href="#"><i class="fal fa-filter" style="color: white"></i></a>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>

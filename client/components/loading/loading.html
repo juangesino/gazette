@@ -1,0 +1,16 @@
+<template name="loading">
+  <div class="row" id="loading">
+    <div class="col-md-12" style="text-align: center;">
+      <br><br>
+      <hr>
+      <i class="fa fa-spin fa-circle-o-notch text-accent fa-4x"></i>
+      <br><br>
+      {{#if message}}
+        {{message}}
+      {{else}}
+        Cargando..
+      {{/if}}
+      <hr>
+    </div>
+  </div>
+</template>

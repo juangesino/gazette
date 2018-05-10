@@ -1,0 +1,29 @@
+<head>
+  <title>MyNews</title>
+  <meta name="theme-color" content="#5868F9">
+  <link href="/assets/fonts/font-awesome-pro/fontawesome-all.min.css" rel="stylesheet">
+  <meta content="width=device-width,initial-scale=1" name=viewport>
+  <script src="/assets/jquery.fingers.js" rel="stylesheet"></script>
+  <script type="text/javascript">
+    (function($){
+      $.fn.disableSelection = function() {
+          return this
+                   .attr('unselectable', 'on')
+                   .css('user-select', 'none')
+                   .on('selectstart', false);
+      };
+    })(jQuery);
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(document).bind('pullright', function (event, data) {
+        if (data.document_horizontal_scrolling) {
+          $('.modal-backdrop').hide();
+          $('.navbar-brand').click();
+        }
+      });
+    });
+  </script>
+</head>
+
+<body></body>

@@ -1,0 +1,19 @@
+.profile-image-holder {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.profile-image {
+    width: 30px;
+    position: relative;
+    top: -5px;
+    float: left;
+    left: -5px;
+}
+
+.navbar {
+  
+}
+
+.navbar-brand {
+  line-height: 30px;
+}

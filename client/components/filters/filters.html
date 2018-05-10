@@ -1,0 +1,36 @@
+<template name="filters">
+  <div id="filters" style="display: none;">
+    <nav class="navbar navbar-default" style="background: #313daf; border: none;border-radius: 0;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-1" style="padding: 0;">
+          </div>
+          <div class="col-xs-10" style="padding: 0;color:white">
+            <div class="navbar-header" style="text-align: center;">
+              <a class="navbar-brand" style="display: inline-block;float: none;color:white">
+                Filters
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-1" style="padding: 0;">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="padding-bottom:0">
+      <div class="row">
+        <div class="col-xs-6">Show done</div>
+        <div class="col-xs-6" style="text-align: right"> <input type="checkbox" class="js-toggle-done-articles" {{getChecked 'displayDone'}}> </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">Show downvoted</div>
+        <div class="col-xs-6" style="text-align: right"> <input type="checkbox" class="js-toggle-downvoted-articles" {{getChecked 'displayDownvoted'}}> </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">Show unmatched</div>
+        <div class="col-xs-6" style="text-align: right"> <input type="checkbox" class="js-toggle-unmatched-articles" {{getChecked 'displayUnmatched'}}> </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</template>
