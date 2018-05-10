@@ -22,6 +22,9 @@ Meteor.methods({
       let site = $('meta[property="og:site_name"]').attr('content');
       let title = $('meta[property="og:title"]').attr('content');
       let description = $('meta[property="og:description"]').attr('content');
+      if (description == '') {
+        description = $('meta[name="description"]').attr('content');
+      }
       let url = $('meta[property="og:url"]').attr('content');
       let image = $('meta[property="og:image"]').attr('content');
       if (title && title != '') {
