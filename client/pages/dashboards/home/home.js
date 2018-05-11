@@ -40,6 +40,9 @@ Template.article.helpers({
   hasMeta: function () {
     return this.meta;
   },
+  hasImage: function () {
+    return (this.image && typeof this.image !== "undefined" && this.image != '');
+  },
   getThumbsClass: function (thumbs) {
     let thumbsClass = 'btn-default';
     let article = Article.findOne(this._id);
