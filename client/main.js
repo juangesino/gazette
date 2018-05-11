@@ -16,7 +16,7 @@ const handleIntent = function (intent) {
         url: urlMatched,
         meta: false,
         done: false,
-        rating: 1,
+        rating: 0,
         createdOn: new Date(),
     });
     Meteor.call('getMeta', article)
