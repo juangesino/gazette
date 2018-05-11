@@ -20,9 +20,20 @@ Meteor.methods({
       const result = Meteor.http.get(article.url);
       const $ = cheerio.load(result.content);
       let site = $('meta[property="og:site_name"]').attr('content');
+      if (site == '' || typeof site === "undefined") {
+        let pathArray = article.url.split( '/' );
+        let protocol = pathArray[0];
+        let host = pathArray[2];
+        let urlOrigin = protocol + '//' + host;
+        site = urlOrigin
+      }
+      console.log(site);
       let title = $('meta[property="og:title"]').attr('content');
+      if (title == '' || typeof title === "undefined") {
+        title = $('title').text();
+      }
       let description = $('meta[property="og:description"]').attr('content');
-      if (description == '') {
+      if (description == '' || typeof description === "undefined") {
         description = $('meta[name="description"]').attr('content');
       }
       let url = $('meta[property="og:url"]').attr('content');
