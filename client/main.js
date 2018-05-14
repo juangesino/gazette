@@ -17,6 +17,7 @@ const handleIntent = function (intent) {
         meta: false,
         done: false,
         rating: 0,
+        import: 'shared',
         createdOn: new Date(),
     });
     Meteor.call('getMeta', article)

@@ -75,6 +75,7 @@ Template.home.events({
           meta: false,
           done: false,
           rating: 0,
+          import: 'manual',
           createdOn: new Date(),
       });
       Meteor.call('getMeta', article)
