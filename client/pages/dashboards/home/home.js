@@ -1,19 +1,19 @@
 Template.home.helpers({
   articles: function () {
     if (Session.get('displayUnmatched')) {
-      var articles = Article.find({meta: false}, {sort: { done: 1, createdOn: -1}}).fetch();
+      var articles = Article.find({meta: false}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
     } else {
       if (Session.get('displayDone')) {
         if (Session.get('displayDownvoted')) {
-          var articles = Article.find({meta: true}, {sort: { done: 1, createdOn: -1}}).fetch();
+          var articles = Article.find({meta: true}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
         } else {
-          var articles = Article.find({meta: true, rating: { $gte: 0 } }, {sort: { done: 1, createdOn: -1}}).fetch();
+          var articles = Article.find({meta: true, rating: { $gte: 0 } }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
         }
       } else {
         if (Session.get('displayDownvoted')) {
-          var articles = Article.find({meta: true, done: false}, {sort: { done: 1, createdOn: -1}}).fetch();
+          var articles = Article.find({meta: true, done: false}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
         } else {
-          var articles = Article.find({meta: true, done: false, rating: { $gte: 0 } }, {sort: { done: 1, createdOn: -1}}).fetch();
+          var articles = Article.find({meta: true, done: false, rating: { $gte: 0 } }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
         }
       }
     }
@@ -154,5 +154,16 @@ Template.article.events({
         }
       });
     }
+  }
+});
+
+lastScrollTop = 0;
+$(window).scroll(function(event){
+  if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    var scrollTop = $(this).scrollTop();
+    if (scrollTop > lastScrollTop) {
+     Session.set('newsLimit', Session.get('newsLimit') + 5);
+    }
+    lastScrollTop = scrollTop;
   }
 });

@@ -18,6 +18,7 @@ Router.map(function() {
       Session.set('displayDone', false);
       Session.set('displayUnmatched', false);
       Session.set('displayDownvoted', true);
+      Session.set('newsLimit', 5);
       this.next();
     }
   });
