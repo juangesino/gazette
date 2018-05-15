@@ -17,7 +17,7 @@ Meteor.methods({
     this.unblock();
     var article = Article.findOne(articleId);
     try {
-      const result = Meteor.http.get(article.url);
+      const result = Meteor.http.get(article.url, {headers: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'}});
       const $ = cheerio.load(result.content);
       let site = $('meta[property="og:site_name"]').attr('content');
       if (site == '' || typeof site === "undefined") {
@@ -27,7 +27,6 @@ Meteor.methods({
         let urlOrigin = protocol + '//' + host;
         site = urlOrigin
       }
-      console.log(site);
       let title = $('meta[property="og:title"]').attr('content');
       if (title == '' || typeof title === "undefined") {
         title = $('title').text();
@@ -54,16 +53,5 @@ Meteor.methods({
       return false;
     }
     return true;
-  },
-  getHackerNews: function () {
-    this.unblock();
-    var uri = API.hackerNews.domain + API.hackerNews.endpoint + API.hackerNews.items;
-    try {
-      const result = HTTP.get(uri);
-      console.log(result.data);
-    } catch (e) {
-      console.log(e);
-      return false;
-    }
   },
 });

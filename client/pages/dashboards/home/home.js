@@ -112,10 +112,15 @@ Template.home.events({
     let article = Article.findOne(this._id);
     let currentValueDone = article.done || false;
     let currentValueFlag = article.flagged || false;
+    let newRating = -1;
+    if (currentValueFlag) {
+      newRating = 0;
+    }
     Article.update(article._id, {
       $set: {
         flagged: !currentValueFlag,
         done: !currentValueDone,
+        rating: newRating
       }
     });
   }
