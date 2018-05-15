@@ -50,6 +50,7 @@
     <div class="panel-heading" style="text-align: right">
       <button class="btn js-remove-article" style="background: none;"><i class="fal fa-trash"></i></button>
       {{#if hasMeta}}
+        <button class="btn js-flag {{getFlagged}}" style="background: none;"><i class="fal fa-flag"></i></button>
         <button class="btn js-toggle-done" style="background: none;"><i class="fal fa-check"></i></button>
       {{else}}
         <button class="btn js-update" style="background: none;"><i class="fal fa-sync"></i></button>
@@ -68,7 +69,7 @@
           <div class="col-md-8 col-sm-8 col-xs-11 panel-open">
             <a href="{{url}}" target="_blank" rel="noopener" class="article-title"><h4>{{getTitle}}</h4></a>
             <h6 class="article-source">{{site}}</h6>
-            <p>{{description}}</p>
+            <p>{{getDescription}}</p>
           </div>
 
           <div class="col-md-1 pull-right">

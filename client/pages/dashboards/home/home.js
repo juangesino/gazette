@@ -32,9 +32,22 @@ Template.article.helpers({
       return this.url;
     }
   },
+  getDescription: function () {
+    var maxLength = 450;
+    var description = this.description;
+    // if (description.length > maxLength) {
+    //   description = description.substring(0, maxLength) + '...';
+    // }
+    return description;
+  },
   getHidden: function () {
     if (!this.meta) {
       return 'hidden';
+    }
+  },
+  getFlagged: function () {
+    if (this.flagged) {
+      return 'flagged';
     }
   },
   hasMeta: function () {
@@ -94,6 +107,17 @@ Template.home.events({
   'click .js-update': function (event) {
     Meteor.call('getMeta', this._id)
     toastr.success('Succefully updated article.');
+  },
+  'click .js-flag': function (event) {
+    let article = Article.findOne(this._id);
+    let currentValueDone = article.done || false;
+    let currentValueFlag = article.flagged || false;
+    Article.update(article._id, {
+      $set: {
+        flagged: !currentValueFlag,
+        done: !currentValueDone,
+      }
+    });
   }
 });
 

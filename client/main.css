@@ -10,6 +10,10 @@ td {
   color: #337ab7;
 }
 
+.flagged {
+  color: red;
+}
+
 .article-title {
   color: inherit;
 }
