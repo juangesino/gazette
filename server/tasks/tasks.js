@@ -3,7 +3,7 @@ Router.route( "/tasks/clean", function() {
   this.response.setHeader("Content-Type", "application/json");
   this.response.setHeader("Access-Control-Allow-Origin", "*");
   this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  let daysAllowed = 10;
+  let daysAllowed = 2;
   let date = moment().subtract(daysAllowed, 'days').toDate();
   let articles = Article.find({
     import: 'crawler',
