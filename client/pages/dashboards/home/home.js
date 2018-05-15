@@ -163,7 +163,8 @@ Template.article.events({
     } else {
       Article.update(article._id, {
         $set: {
-          rating: 1
+          rating: 1,
+          done: true,
         }
       });
     }
@@ -179,7 +180,8 @@ Template.article.events({
     } else {
       Article.update(article._id, {
         $set: {
-          rating: -1
+          rating: -1,
+          done: true,
         }
       });
     }
