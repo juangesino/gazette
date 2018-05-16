@@ -25,6 +25,15 @@
   margin-bottom: inherit;
   margin-right: inherit;
   margin-left: inherit;
+  width: inherit;
+  padding: 10px 15px;
+  /* padding-right: 0;
+  padding-left: 0; */
+  width: 100%;
+}
+
+.navbar-form .input-group {
+  width: 100%
 }
 
 .input-group-addon {
