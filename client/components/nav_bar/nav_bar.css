@@ -20,6 +20,7 @@
 }
 
 .navbar-form {
+  border-color: inherit !important;
   border: none;
   margin-top: inherit;
   margin-bottom: inherit;
@@ -30,6 +31,7 @@
   /* padding-right: 0;
   padding-left: 0; */
   width: 100%;
+  box-shadow: none !important;
 }
 
 .navbar-form .input-group {
