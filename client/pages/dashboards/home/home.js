@@ -1,21 +1,33 @@
+Session.setDefault('loading', true);
+Session.setDefault('hasBackLink', false);
+Session.setDefault('backLink', null);
+Session.setDefault('navTitle', '');
+Session.setDefault('displayDone', [false]);
+Session.setDefault('displayUnmatched', false);
+Session.setDefault('displayDownvoted', [1, 0, -1]);
+Session.setDefault('newsLimit', 5);
+
+Template.home.onCreated(function () {
+  Session.set('loading', true);
+  Session.set('hasBackLink', false);
+  Session.set('backLink', null);
+  Session.set('navTitle', '');
+  Session.set('displayDone', [false]);
+  Session.set('displayUnmatched', false);
+  Session.set('displayDownvoted', [1, 0, -1]);
+  Session.set('newsLimit', 5);
+});
+
 Template.home.helpers({
   articles: function () {
     if (Session.get('displayUnmatched')) {
       var articles = Article.find({meta: false}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
     } else {
-      if (Session.get('displayDone')) {
-        if (Session.get('displayDownvoted')) {
-          var articles = Article.find({meta: true}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
-        } else {
-          var articles = Article.find({meta: true, rating: { $gte: 0 } }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
-        }
-      } else {
-        if (Session.get('displayDownvoted')) {
-          var articles = Article.find({meta: true, done: false}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
-        } else {
-          var articles = Article.find({meta: true, done: false, rating: { $gte: 0 } }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
-        }
-      }
+      var articles = Article.find({
+        meta: true,
+        done: {$in: Session.get('displayDone')},
+        rating: {$in: Session.get('displayDownvoted')}
+      }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
     }
     return articles;
   },

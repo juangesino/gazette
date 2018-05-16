@@ -11,14 +11,6 @@ Router.map(function() {
     name: 'home',
     template: 'home',
     onBeforeAction: function () {
-      Session.set('loading', true);
-      Session.set('hasBackLink', false);
-      Session.set('backLink', null);
-      Session.set('navTitle', '');
-      Session.set('displayDone', false);
-      Session.set('displayUnmatched', false);
-      Session.set('displayDownvoted', true);
-      Session.set('newsLimit', 5);
       this.next();
     }
   });
