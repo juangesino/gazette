@@ -39,10 +39,6 @@
       </div>
     </div>
   </div>
-
-  <script type="text/javascript">
-    $('body').disableSelection();
-  </script>
 </template>
 
 <template name="article">
@@ -72,11 +68,15 @@
             <p>{{getDescription}}</p>
           </div>
 
-          <div class="col-md-1 pull-right">
-            <button class="btn {{getThumbsClass 'up'}} btn-round js-upvote"><i class="fal fa-thumbs-up"></i></button>
-            <button class="btn {{getThumbsClass 'down'}} btn-round js-downvote"><i class="fal fa-thumbs-down"></i></button>
-          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-xs-6">
+            <button class="btn {{getThumbsClass 'down'}} btn-block js-downvote"><i class="fal fa-thumbs-down"></i> Dislike</button>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn {{getThumbsClass 'up'}} btn-block js-upvote"><i class="fal fa-thumbs-up"></i> Like</button>
+          </div>
         </div>
       </div>
     </div>
