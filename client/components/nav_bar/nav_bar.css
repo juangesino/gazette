@@ -2,6 +2,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .profile-image {
     width: 30px;
     position: relative;
@@ -11,9 +12,26 @@
 }
 
 .navbar {
-  
+
 }
 
 .navbar-brand {
   line-height: 30px;
+}
+
+.navbar-form {
+  border: none;
+  margin-top: inherit;
+  margin-bottom: inherit;
+  margin-right: inherit;
+  margin-left: inherit;
+}
+
+.input-group-addon {
+  background-color: white;
+}
+
+.navbar-form input:focus {
+  outline: none;
+  border: 1px solid #ccc;
 }

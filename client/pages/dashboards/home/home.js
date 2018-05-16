@@ -6,6 +6,7 @@ Session.setDefault('displayDone', [false]);
 Session.setDefault('displayUnmatched', false);
 Session.setDefault('displayDownvoted', [1, 0, -1]);
 Session.setDefault('newsLimit', 5);
+Session.setDefault('searchQuery', '');
 
 Template.home.onCreated(function () {
   Session.set('loading', true);
@@ -16,6 +17,7 @@ Template.home.onCreated(function () {
   Session.set('displayUnmatched', false);
   Session.set('displayDownvoted', [1, 0, -1]);
   Session.set('newsLimit', 5);
+  Session.set('searchQuery', '');
 });
 
 Template.home.helpers({
@@ -23,11 +25,18 @@ Template.home.helpers({
     if (Session.get('displayUnmatched')) {
       var articles = Article.find({meta: false}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
     } else {
-      var articles = Article.find({
-        meta: true,
-        done: {$in: Session.get('displayDone')},
-        rating: {$in: Session.get('displayDownvoted')}
-      }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
+      if (Session.get('searchQuery') === '') {
+        var articles = Article.find({
+          meta: true,
+          done: {$in: Session.get('displayDone')},
+          rating: {$in: Session.get('displayDownvoted')}
+        }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
+      } else {
+        var articles = Article.find({
+          meta: true,
+          title: {'$regex': Session.get('searchQuery'), '$options' : 'gi'}
+        }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
+      }
     }
     return articles;
   },

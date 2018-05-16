@@ -36,5 +36,9 @@ Template.navBar.events({
   'click .js-toggle-filters': function () {
     $('#filters').slideToggle('slow');
     return true;
+  },
+  'keyup #searchInput': function (event) {
+    Session.set('searchQuery', event.target.value);
+    return true;
   }
 })
