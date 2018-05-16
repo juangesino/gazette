@@ -4,7 +4,7 @@ Meteor.methods({
   todoNoticias: function () {
     const domain = 'https://tn.com.ar';
     const endpoints = [];
-    const relativeEndpoint = '/archivo/tn/todo/' + (new Date()).getFullYear() +'/' + ("0" + (new Date()).getMonth()).slice(-2) + '/' + ("0" + (new Date()).getDate()).slice(-2);
+    const relativeEndpoint = '/archivo/tn/todo/' + (new Date()).getFullYear() +'/' + ("0" + ((new Date()).getMonth() + 1)).slice(-2) + '/' + ("0" + ((new Date()).getDate())).slice(-2);
     endpoints.push(relativeEndpoint);
     const linkSelector = 'a.url.entry-title.size-4';
     let articleUrls = [];
