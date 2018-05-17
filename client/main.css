@@ -56,6 +56,10 @@ td {
   border-color: #adadad;
 }
 
+/* .btn:active, .btn:focus, .btn:hover, .btn:active:focus {
+  background-color: inherit;
+} */
+
 .container {
   padding-bottom: 95px;
 }
