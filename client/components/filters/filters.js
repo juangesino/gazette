@@ -1,4 +1,21 @@
 Template.filters.helpers({
+  getBtnSelected: function (rating) {
+    let ratingSession = Session.get('displayDownvoted');
+    if (_.include(ratingSession, parseInt(rating))) {
+      return 'btn-primary';
+    }
+  },
+  getBtnSelectedDone: function (value) {
+    let doneSession = Session.get('displayDone');
+    if (_.include(doneSession, value)) {
+      return 'btn-primary';
+    }
+  },
+  getBtnSelectedUnmatched: function () {
+    if (Session.get('displayUnmatched')) {
+      return 'btn-primary';
+    }
+  },
   getChecked: function (session) {
     let sessionValue = Session.get(session);
     switch (session) {
@@ -13,7 +30,7 @@ Template.filters.helpers({
         }
         break;
       case 'displayUnmatched':
-        if (session) {
+        if (sessionValue) {
           return 'checked';
         }
         break;
@@ -41,6 +58,26 @@ Template.filters.events({
     }
   },
   'click .js-toggle-unmatched-articles': function (event) {
-    Session.set('displayUnmatched', event.target.checked);
+    Session.set('displayUnmatched', !Session.get('displayUnmatched'));
+  },
+  'click .js-toggle-rating': function (event) {
+    let targetRating = parseInt(event.target.dataset.rating);
+    let ratingSession = Session.get('displayDownvoted');
+    if (_.include(ratingSession, targetRating)) {
+      Session.set('displayDownvoted', _.reject(ratingSession, function(e){ return e === targetRating; }));
+    } else {
+      ratingSession.push(targetRating);
+      Session.set('displayDownvoted', ratingSession);
+    }
+  },
+  'click .js-toggle-done': function (event) {
+    let targetDone = (event.target.dataset.done === 'true');
+    let doneSession = Session.get('displayDone');
+    if (_.include(doneSession, targetDone)) {
+      Session.set('displayDone', _.reject(doneSession, function(e){ return e === targetDone; }));
+    } else {
+      doneSession.push(targetDone);
+      Session.set('displayDone', doneSession);
+    }
   }
 })

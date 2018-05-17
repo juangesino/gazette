@@ -50,6 +50,12 @@ td {
   border-radius: 100%;
 }
 
+.btn-selected {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
 .container {
   padding-bottom: 95px;
 }

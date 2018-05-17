@@ -19,16 +19,28 @@
     </nav>
     <div class="container" style="padding-bottom:0">
       <div class="row">
-        <div class="col-xs-6">Show done</div>
-        <div class="col-xs-6" style="text-align: right"> <input type="checkbox" class="js-toggle-done-articles" {{getChecked 'displayDone'}}> </div>
+        <div class="col-xs-12">
+          <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+            <a class="btn btn-default js-toggle-done {{getBtnSelectedDone false}}" data-done="false"><i class="fal fa-minus"></i> Pending</a>
+						<a class="btn btn-default js-toggle-done {{getBtnSelectedDone true}}" data-done="true"><i class="fal fa-check"></i> Done</a>
+					</div>
+        </div>
       </div>
+      <br>
       <div class="row">
-        <div class="col-xs-6">Show downvoted</div>
-        <div class="col-xs-6" style="text-align: right"> <input type="checkbox" class="js-toggle-downvoted-articles" {{getChecked 'displayDownvoted'}}> </div>
+        <div class="col-xs-12">
+          <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+            <a class="btn btn-default {{getBtnSelected -1}} js-toggle-rating" data-rating="-1"><i class="fal fa-thumbs-down"></i> Dislike</a>
+						<a class="btn btn-default {{getBtnSelected 0}} js-toggle-rating" data-rating="0">No Vote</a>
+						<a class="btn btn-default {{getBtnSelected 1}} js-toggle-rating" data-rating="1"><i class="fal fa-thumbs-up"></i> Like</a>
+					</div>
+        </div>
       </div>
+      <br>
       <div class="row">
-        <div class="col-xs-6">Show unmatched</div>
-        <div class="col-xs-6" style="text-align: right"> <input type="checkbox" class="js-toggle-unmatched-articles" {{getChecked 'displayUnmatched'}}> </div>
+        <div class="col-xs-12">
+          <button class="btn btn-default btn-block {{getBtnSelectedUnmatched}} js-toggle-unmatched-articles">Show only unmatched</button>
+        </div>
       </div>
       <hr>
     </div>
