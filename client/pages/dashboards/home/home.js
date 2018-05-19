@@ -99,7 +99,7 @@ Template.article.helpers({
   },
   tags: function () {
     if (this.tags) {
-      return this.tags.slice(0, 5);  
+      return this.tags.slice(0, 5);
     }
   },
   tags2: function () {

@@ -9,7 +9,7 @@ export function getTags($) {
     })
   } else {
     // Standard. Used by Todo Noticias & Reuters.
-    tags = $('meta[name="keywords"]').attr('content');
+    tags = $('meta[name="keywords"], meta[name="Keywords"], meta[name="news_keywords"]').attr('content');
     if (tags && (tags === 'none' || tags === 'None')) {
       tags = [];
     }
@@ -37,6 +37,18 @@ export function getTags($) {
         // Engadget
         _.each($('meta[property="article:tag"]'), function (e) {
           tags.push($(e).attr('content').trim());
+        })
+        // Medium
+        _.each($('.tags--postTags li'), function (e) {
+          tags.push($(e).text().trim());
+        })
+        // zdnet.com
+        _.each($('.related-topics a'), function (e) {
+          tags.push($(e).text().trim());
+        })
+        // GitHub
+        _.each($('.list-topics-container a'), function (e) {
+          tags.push($(e).text().trim());
         })
       }
     }
