@@ -74,6 +74,9 @@
 
           <div class="col-md-8 col-sm-8 col-xs-11 panel-open">
             <a href="{{url}}" target="_blank" rel="noopener" class="article-title"><h4>{{getTitle}}</h4></a>
+            {{#each tags}}
+              <span class="label label-primary">{{this}}</span>
+            {{/each}}
             <h6 class="article-source">{{site}}</h6>
             <p>{{getDescription}}</p>
           </div>

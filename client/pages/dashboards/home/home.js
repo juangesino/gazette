@@ -96,6 +96,73 @@ Template.article.helpers({
     if (article.done) {
       return 'done';
     }
+  },
+  tags: function () {
+    return this.tags.slice(0, 5);
+  },
+  tags2: function () {
+    // Get string and make it lower case.
+    let string = (this.title + " " + this.description).toLowerCase();
+    // Get rid of weird characters.
+    let weirdCharacters = [
+      "|", "-", "_", "\"", "'", "\\(", "\\)", "\\?", "¿", "\\:", "€", "$", "£",
+      "’", "\\$", "…", "“", "”", "\\‘", "&quot;", "\\*", "&", "quot;"
+    ];
+    _.each(weirdCharacters, function (char) {
+      string = string.replace(new RegExp(char, 'g'), '');
+    })
+    // Create array of strings.
+    let words = string.replace(/,/g, ' ').replace(/[.]/g, '').split(/\s/);
+    // Get rid of the numbers.
+    words = _.filter(words, function (e) { return String(parseFloat(e)) === 'NaN' });
+    // Get rid of weird spaces strings.
+    let weirdWords = ['', ' ', '-', "—"];
+    words = _.reject(words, function (e) { return _.include(weirdWords, e) });
+    // Get rid of common words (English).
+    let commonWords = [
+      "to", "its", "own", "with", "an", "towards", "on", "the", "of", "and",
+      "low", "you", "in", "i", "as", "a", "why", "for", "one", "thing", "they",
+      "often", "wrong", "whats", "lets", "take", "at", "up", "could", "this",
+      "was", "how", "from", "it", "has", "will", "be", "are", "is", "that",
+      "such", "about", "gets", "might", "just", "it's", "it’s", "by", "if", "here",
+      "which", "would", "how", "what", "why", "when", "not", "no", "yes", "eventually",
+      "few", "more", "today", "day", "introducing", "their", "rid", "plan", "his",
+      "details", "goes", "ahead", "behind", "takes", "over", "previous", "include",
+      "total", "considered", "back", "but", "says", "said", "say", "carries",
+      "increasingly", "brought", "continues", "move", "leave", "last", "january",
+      "february", "march", "april", "may", "june", "july", "august", "september",
+      "october", "november", "december", "monday", "tuesday", "wednesday", "thursday",
+      "friday", "saturday", "sunday", "getting", "weekend", "still", "faces", "form",
+      "from", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+      "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "off", "across",
+      "appears", "being", "between", "continue", "head", "likely", "main", "make",
+      "many", "noted", "only", "recently", "told", "using", "who", "almost", "admit",
+      "net", "after", "spot", "where", "worked", "than", "them", "week", "had"
+    ];
+    words = _.reject(words, function (e) { return _.include(commonWords, e) });
+    // Get rid of common words (Spanish).
+    let commonWordsEs = [
+      "y", "el", "del", "de", "a", "la", "que", "al", "es", "su", "para", "un",
+      "qué", "en", "le", "no", "ellos", "yo", "mi", "fue", "por", "las", "tras",
+      "sus", "dicen", "los", "luego", "mira", "cerca", "sigue", "otro", "nuevo",
+      "hubo", "ni", "con"
+    ];
+    words = _.reject(words, function (e) { return _.include(commonWordsEs, e) });
+    // Get rid of single character words.
+    words = _.reject(words, function (e) { return e.length === 1 });
+
+    // console.log(words);
+
+    var freqMap = {};
+    words.forEach(function(w) {
+        if (!freqMap[w]) {
+            freqMap[w] = 0;
+        }
+        freqMap[w] += 1;
+    });
+    console.log(freqMap);
+
+    return ['tech', 'mobile', 'machine', 'learning']
   }
 });
 

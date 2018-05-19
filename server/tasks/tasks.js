@@ -1,3 +1,7 @@
+/*
+This task will remove all articles that are at least 2 days old
+and have not been read/rated. This task needs to be run every day.
+*/
 Router.route( "/tasks/clean", function() {
   this.response.statusCode = 200;
   this.response.setHeader("Content-Type", "application/json");
