@@ -98,7 +98,9 @@ Template.article.helpers({
     }
   },
   tags: function () {
-    return this.tags.slice(0, 5);
+    if (this.tags) {
+      return this.tags.slice(0, 5);  
+    }
   },
   tags2: function () {
     // Get string and make it lower case.
