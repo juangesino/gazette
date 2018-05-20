@@ -3,11 +3,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-2" style="padding: 0;">
-          <div class="navbar-header">
-            {{#if hasBackLink}}
-              <a class="navbar-brand" href="{{backLink}}"><i class="fa fa-arrow-left" style="color: white;"></i></a>
-            {{/if}}
-          </div>
+          {{#if hasBackLink}}
+            <a class="navbar-brand" href="{{backLink}}"><i class="fa fa-arrow-left" style="color: white;"></i></a>
+          {{else}}
+            <!-- <a class="navbar-brand" href="#" style="padding: 15px 25px;float: right;"><i class="fal fa-bars" style="color: white"></i></a> -->
+          {{/if}}
         </div>
         <div class="col-xs-8" style="padding: 0;">
           <form class="navbar-form">

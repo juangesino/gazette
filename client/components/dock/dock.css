@@ -1,0 +1,21 @@
+footer {
+    position: fixed;
+    height: 60px;
+    bottom: 0;
+    width: 100%;
+    background-color: #5868f9;
+    text-align: center;
+    color: white;
+}
+
+footer .footer-icon {
+  font-size: 18px;
+}
+
+footer .row {
+  margin-top: 10px;
+}
+
+footer a, footer a:hover, footer a:focus, footer a:active, footer a:focus:active {
+  color: white;
+}

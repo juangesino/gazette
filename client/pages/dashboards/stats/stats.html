@@ -1,0 +1,56 @@
+<template name="stats">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Articles</h3>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>Total Articles</td>
+            <td>{{getTotalArticles}}</td>
+          </tr>
+          <tr>
+            <td>Unread Articles</td>
+            <td>{{getUnreadArticles}}</td>
+          </tr>
+          <tr>
+            <td>Liked Articles</td>
+            <td>{{getLikedArticles}}</td>
+          </tr>
+          <tr>
+            <td>Not Liked Articles</td>
+            <td>{{getUnlikedArticles}}</td>
+          </tr>
+          <tr>
+            <td>Flagged Articles</td>
+            <td>{{getFlaggedArticles}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-12">
+      <h3>Tags</h3>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>Total Tags</td>
+            <td>{{getTotalTags}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-12">
+      <h3>Top 10 Tags</h3>
+      <table class="table table-striped" style="text-align: center;">
+        <tbody>
+          {{#each topTags}}
+            <tr>
+              <td>{{this.value}} ({{this.count}})</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>

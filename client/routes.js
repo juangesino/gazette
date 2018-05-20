@@ -14,6 +14,15 @@ Router.map(function() {
       this.next();
     }
   });
+  this.route('stats', {
+    path: '/stats',
+    to: 'main',
+    name: 'stats',
+    template: 'stats',
+    onBeforeAction: function () {
+      this.next();
+    }
+  });
 });
 
 Router.route( "/tasks/clean", function() {

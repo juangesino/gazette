@@ -92,6 +92,11 @@ td {
     border-color: #5868f9;
 }
 
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
 /* Vertical align modal */
 .vertical-alignment-helper {
     display:table;
