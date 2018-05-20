@@ -54,6 +54,6 @@ export function getTags($) {
     }
   }
   // Make all lowercase.
-  _.map(tags, function(e) { return e.toLowerCase(); })
+  tags = _.map(tags, function(e) { return e.toLowerCase(); })
   return tags;
 }
