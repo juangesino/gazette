@@ -1,7 +1,7 @@
 App.info({
-  id: 'com.juangesino.mynews',
-  name: 'MyNews',
-  version: "0.0.1",
+  id: 'com.juangesino.gazette',
+  name: 'Gazette',
+  version: "0.0.5",
   description: 'Personal news aggregator.',
   author: 'Juan I. Gesino',
   email: 'juangesino@gmail.com',

@@ -1,5 +1,5 @@
 {
-  "name": "my-news",
+  "name": "gazette",
   "private": true,
   "scripts": {
     "start": "meteor run"
