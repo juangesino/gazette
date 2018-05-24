@@ -81,19 +81,19 @@ Use the following command: `wget https://<HEROKU-APP-NAME>.herokuapp.com/tasks/c
 
 Now we can setup the crawling tasks. For now, we have 3 available crawler tasks we can use:
 
-**TechCrunch**
+**TechCrunch** ([techcrunch.com](https://techcrunch.com/))
 
 ```
 wget https://<HEROKU-APP-NAME>.herokuapp.com/crawlers/techcrunch
 ```
 
-**TodoNoticias**
+**TodoNoticias** ([tn.com.ar](https://tn.com.ar/))
 
 ```
 wget https://<HEROKU-APP-NAME>.herokuapp.com/crawlers/todoNoticias
 ```
 
-**DutchNews.nl**
+**DutchNews.nl** ([dutchnews.nl](https://www.dutchnews.nl/))
 
 ```
 wget https://<HEROKU-APP-NAME>.herokuapp.com/crawlers/dutchNews
