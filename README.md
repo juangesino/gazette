@@ -71,7 +71,37 @@ The Meteor application requires a server. We can do this by deploying the server
 
 Follow <a href="https://medium.com/@leonardykris/how-to-run-a-meteor-js-application-on-heroku-in-10-steps-7aceb12de234#.lmg8s462o" target="_blank">these</a> steps to deploy the Meteor app on Heroku.
 
-After that we need to setup the tasks.
+##### Setup Tasks
+
+To perform scheduled tasks, we can use the <a href="https://elements.heroku.com/addons/scheduler" target="_blank">Heroku scheduler</a>. It's free and easy to use.
+
+The first task we need to setup is the cleaner. This makes sure to clean up if articles start piling up.
+
+Use the following command: `wget https://<HEROKU-APP-NAME>.herokuapp.com/tasks/clean` and set it to run daily.
+
+Now we can setup the crawling tasks. For now, we have 3 available crawler tasks we can use:
+
+**TechCrunch**
+
+```
+wget https://<HEROKU-APP-NAME>.herokuapp.com/crawlers/techcrunch
+```
+
+**TodoNoticias**
+
+```
+wget https://<HEROKU-APP-NAME>.herokuapp.com/crawlers/todoNoticias
+```
+
+**DutchNews.nl**
+
+```
+wget https://<HEROKU-APP-NAME>.herokuapp.com/crawlers/dutchNews
+```
+
+<br>
+
+You can set them to run as many times and as frequently as you need. If you are not using Heroku, you can use a Cron to perform each of these tasks.
 
 **Note**: You will need to deploy this server for the Android app to work.
 
