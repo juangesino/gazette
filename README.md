@@ -4,11 +4,11 @@
 <br />
 <br />
 
-<img src="resources/mockups/mockup.png" alt="Mockup" width="400" align="center" />
-
-### About
+## About
 
 Gazette is a simple Meteor application that aggregates news and generates a database of read articles as well as your opinion about them. The main goal of Gazette is to build a database of articles you are interested about. In the future, this could be used with ML to recommend articles or even be able to only show articles that are relevant to your preferences.
+
+<img src="resources/mockups/mockup.png" alt="Mockup" width="400" align="center" />
 
 ## Setup
 
