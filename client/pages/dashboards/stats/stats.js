@@ -3,7 +3,7 @@ Template.stats.helpers({
     return Article.find().fetch().length;
   },
   getUnreadArticles: function () {
-    return Article.find({done: 0}).fetch().length;
+    return Article.find({done: {$in: [null, false]}}).fetch().length;
   },
   getLikedArticles: function () {
     return Article.find({rating: 1}).fetch().length;
