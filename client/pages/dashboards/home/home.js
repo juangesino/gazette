@@ -23,17 +23,19 @@ Template.home.onCreated(function () {
 Template.home.helpers({
   articles: function () {
     if (Session.get('displayUnmatched')) {
-      var articles = Article.find({meta: false}, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
+      var articles = Article.find({meta: false, archived: {$in: [null, false]} }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
     } else {
       if (Session.get('searchQuery') === '') {
         var articles = Article.find({
           meta: true,
+          archived: {$in: [null, false]},
           done: {$in: Session.get('displayDone')},
           rating: {$in: Session.get('displayDownvoted')}
         }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
       } else {
         var articles = Article.find({
           meta: true,
+          archived: {$in: [null, false]},
           title: {'$regex': Session.get('searchQuery'), '$options' : 'gi'}
         }, {sort: { done: 1, createdOn: -1}, limit: Session.get('newsLimit')}).fetch();
       }

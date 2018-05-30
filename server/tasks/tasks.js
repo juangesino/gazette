@@ -11,13 +11,19 @@ Router.route( "/tasks/clean", function() {
   let date = moment().subtract(daysAllowed, 'days').toDate();
   let articles = Article.find({
     import: 'crawler',
-    done: false,
+    done: {$in: [null, false]},
+    archived: {$in: [null, false]},
     rating: 0,
     createdOn: {
       $lte: date
     }
   })
   let ids = _.map(articles.fetch(), function(val, index) { return val._id } )
-  Article.remove({_id: {$in: ids} });
+  console.log(ids);
+  Article.update({_id: {$in: ids}}, {
+    $set: {
+      archived: true,
+    }
+  });
   this.response.end('');
 }, { where: "server" });
