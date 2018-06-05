@@ -1,3 +1,5 @@
+const REJECTED_TAGS = ['society', 'post'];
+
 Template.stats.helpers({
   getTotalArticles: function () {
     return Article.find().fetch().length;
@@ -21,6 +23,9 @@ Template.stats.helpers({
     	tags.push(article.tags);
     });
     tags = _.flatten(tags);
+    tags = _.map(tags, function (tag) { return tag.trim() });
+    tags = _.reject(tags, function(tag) { return tag === '' || tag.lenght === 0 });
+    tags = _.reject(tags, function(tag) { return _.contains(REJECTED_TAGS, tag) });
     return tags.length;
   },
   topTags: function () {
@@ -30,6 +35,9 @@ Template.stats.helpers({
     	tags.push(article.tags);
     });
     tags = _.flatten(tags)
+    tags = _.map(tags, function (tag) { return tag.trim() });
+    tags = _.reject(tags, function(tag) { return tag === '' || tag.lenght === 0 });
+    tags = _.reject(tags, function(tag) { return _.contains(REJECTED_TAGS, tag) });
     tagFreq = compressArray(tags)
     topTags = _.sortBy(tagFreq, function(tag){ return tag.count; });
     topTags = topTags.reverse();
