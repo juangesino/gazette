@@ -10,6 +10,10 @@ Router.map(function() {
     to: 'main',
     name: 'home',
     template: 'home',
+    loadingTemplate: 'loading',
+    waitOn: function () {
+      return Meteor.subscribe('articlesIndex');
+    },
     onBeforeAction: function () {
       this.next();
     }
@@ -19,6 +23,10 @@ Router.map(function() {
     to: 'main',
     name: 'stats',
     template: 'stats',
+    loadingTemplate: 'loading',
+    waitOn: function () {
+      return Meteor.subscribe('articlesIndex');
+    },
     onBeforeAction: function () {
       this.next();
     }

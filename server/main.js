@@ -11,6 +11,10 @@ import { getTags } from '/server/scrapers/tags.js'
 
 Article = new Mongo.Collection("article");
 
+Meteor.publish('articlesIndex', function(){
+  return Article.find();
+});
+
 Meteor.methods({
   getMeta: function (articleId) {
     this.unblock();
