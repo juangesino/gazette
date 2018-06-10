@@ -6,7 +6,7 @@
 
 ## About
 
-Gazette is a simple Meteor application that aggregates news and generates a database of articles you read as well as your opinion about them. The primary goal of Gazette is to build a database of articles you are interested in. In the future, this could be used with ML to recommend articles or even be only to show articles that are relevant to your preferences.
+Gazette is a simple Meteor application that aggregates news and generates a database of articles you read as well as your opinion about them. The primary goal of Gazette is to build a database of articles you are interested in. In the future, this could be used with ML to recommend articles, or even only show articles that are relevant to your preferences.
 
 <img src="resources/mockups/mockup.png" alt="Mockup" width="400" align="center" />
 
@@ -79,7 +79,7 @@ The first task we need to setup is the cleaner. This task makes sure to clean up
 
 Use the following command: `wget https://<HEROKU-APP-NAME>.herokuapp.com/tasks/clean` and set it to run daily.
 
-Now we can setup the crawling tasks. For now, we have 3 available crawler tasks we can use:
+Now we can setup the crawling tasks. At the moment, we have 3 available crawler tasks we can use:
 
 **TechCrunch** ([techcrunch.com](https://techcrunch.com/))
 
