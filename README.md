@@ -126,4 +126,4 @@ Replace `<YOUR-HEROKU-APP-NAME>` with the name of the Heroku app for your server
 
 ## License
 
-See [MIT-LICENSE](https://github.com/juangesino/photon/blob/master/LICENSE).
+See [MIT-LICENSE](https://github.com/juangesino/gazette/blob/master/LICENSE).
